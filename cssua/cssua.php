@@ -1,19 +1,28 @@
 <?php
+
 /**
-	Plugin Name: CSSUA for WordPress
-	Plugin URI: http://cssua.org
-	Description: Adds the CSSUA Library Script to WordPress  
-	Version: 1.0
-	Author: Joe Hana
-	Author URI: http://joehana.com
-	Author Email: me@joehana.com
-*/
+ *
+ * Plugin Name: 	CSSUA for WordPress
+ * Plugin URI: 		http://joehana.com
+ *
+ * Description: 	Adds the CSSUA Library Script to WordPress
+ * Version: 		1.1.0
+ *
+ * Author:			ANEX
+ * Author URI: 		http://joehana.com
+ * Author Email: 	me@joehana.com
+ *
+ * Text Domain: 	cssua
+ * Domain Path: 	/cssua/lang
+ *
+ */
+
 
 /** 
  * Create wpCasa Showings
  * plugin class
  *
- * @since 1.0
+ * @since 1.0.0
  */
 
 class cssua {
