@@ -8,7 +8,7 @@
  * Description: 	Adds the CSSUA Library Script to WordPress
  * Version: 		1.1.0
  *
- * Author:			ANEX
+ * Author:			Joe Hana
  * Author URI: 		http://joehana.com
  * Author Email: 	me@joehana.com
  *
@@ -26,10 +26,6 @@
  */
 
 class cssua {
-	
-    /*--------------------------------------------*
-     * Constructor
-     *--------------------------------------------*/
 
     /**
      * Initializes the plugin.
@@ -37,23 +33,19 @@ class cssua {
     function __construct() {
         
         // Register site styles and scripts
-        add_action( 'wp_enqueue_scripts', array( &$this, 'register_plugin_scripts' ) );
+        add_action( 'wp_enqueue_scripts', array( &$this, 'assets' ) );
 
-    } // end constructor
+    } // end __construct
     
-    /*--------------------------------------------*
-     * Styles and scripts
-     *--------------------------------------------*/
-
     /**
      * Registers and enqueues plugin-specific scripts.
      */
-    public function register_plugin_scripts() {
+    public function assets() {
 
         wp_register_script( 'cssua', plugins_url( 'cssua/cssua.min.js' ) );
         wp_enqueue_script( 'cssua' );
 
-    } // end register_plugin_scripts
+    } // end assets
 	
 } // end class
 
