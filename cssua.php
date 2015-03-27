@@ -12,14 +12,11 @@
  * Author URI: 		http://joehana.com
  * Author Email: 	me@joehana.com
  *
- * Text Domain: 	cssua
- * Domain Path: 	/cssua/lang
- *
  */
 
 
 /** 
- * Create wpCasa Showings
+ * Create CSSUA
  * plugin class
  *
  * @since 1.0.0
@@ -33,7 +30,7 @@ class cssua {
     function __construct() {
         
         // Register site styles and scripts
-        add_action( 'wp_enqueue_scripts', array( &$this, 'assets' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'assets' ) );
 
     } // end __construct
     
@@ -54,7 +51,7 @@ class cssua {
 /**
  * Call class
  *
- * @since 1.0
+ * @since 1.0.0
  */
  
 $cssua = new cssua();
