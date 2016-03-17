@@ -1,8 +1,8 @@
 /**
- * CssUserAgent (cssua.js) v2.1.28
+ * CssUserAgent (cssua.js) v2.1.31
  * http://cssuseragent.org
  * 
- * Copyright (c)2006-2014 Stephen M. McKamey.
+ * Copyright (c)2006-2015 Stephen M. McKamey.
  * Licensed under The MIT License.
  */
 /*jshint smarttabs:true, regexp:false, browser:true */
@@ -146,10 +146,6 @@ function(html, userAgent, sa) {
 						}
 					}
 
-				} else if (R_desktop.exec(uaStr)) {
-					// desktop OS indicators
-					ua.desktop = RegExp.$1;
-
 				} else if (R_game.exec(uaStr)) {
 					// game console indicators
 					ua.game = RegExp.$1;
@@ -158,6 +154,10 @@ function(html, userAgent, sa) {
 					if (ua.version && !ua[game]) {
 						ua[game] = ua.version;
 					}
+
+				} else if (R_desktop.exec(uaStr)) {
+					// desktop OS indicators
+					ua.desktop = RegExp.$1;
 				}
 
 				// platform naming standardizations
@@ -190,6 +190,13 @@ function(html, userAgent, sa) {
 					ua.fluidapp = ua.version;
 				}
 
+				if (ua.edge) {
+					delete ua.applewebkit;
+					delete ua.safari;
+					delete ua.chrome;
+					delete ua.android;
+				}
+
 				if (ua.applewebkit) {
 					ua.webkit = ua.applewebkit;
 					delete ua.applewebkit;
@@ -201,8 +208,12 @@ function(html, userAgent, sa) {
 					}
 
 					if (ua.safari) {
-						if (ua.chrome || ua.crios || ua.opera || ua.silk || ua.fluidapp || ua.phantomjs || (ua.mobile && !ua.ios)) {
+						if (ua.chrome || ua.crios || ua.fxios || ua.opera || ua.silk || ua.fluidapp || ua.phantomjs || (ua.mobile && !ua.ios)) {
 							delete ua.safari;
+
+							if (ua.vivaldi) {
+								delete ua.chrome;
+							}
 
 						} else if (ua.version && !ua.rim_tablet_os) {
 							ua.safari = ua.version;
@@ -226,6 +237,7 @@ function(html, userAgent, sa) {
 						ua.ie = ua.msie || ua.rv;
 					}
 					delete ua.msie;
+					delete ua.android;
 
 					if (ua.windows_phone_os) {
 						// standardize window phone
